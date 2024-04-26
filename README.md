@@ -16,9 +16,17 @@ Hardware Parts List:
  2. MPU6050 Sensor (1)
  3. FIT0774 Vibration Motors (12)
  4. HD44780 LCD (1)
+ 5. 1 kΩ Resistors (2)
 
 Hardware Design:
+ - The hardware setup for the project divides into 4 distinct "islands" or electronic component groupings:
+   a. Island 1 --> Launchpad
+   b. Island 2 --> LCD (plus potentiometer)
+   c. Island 3 --> Intermediary Nodes
+   d. Island 4 --> Sensor
 
-Visualization of Hardware Setup:
- - ![alt text](http://url/to/img.png)
+Launchpad:
+  Note: "a --> b" is equivalent to "a is directly connected to b by a physical wire"
+ - 
+
 
