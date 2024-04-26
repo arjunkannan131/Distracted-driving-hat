@@ -10,14 +10,14 @@ Report Tasks:
  - (Finshed?) Code Architecture
  - (Finshed?) Hardware Design
 
-Hardware Design:
-
-Hardware List: 
+Hardware Parts List: 
  - Component Name (Quantity)
  1. MSP430G2553 Launchpad (1)
  2. MPU6050 Sensor (1)
  3. FIT0774 Vibration Motors (12)
  4. HD44780 LCD (1)
+
+Hardware Design:
 
 Visualization of Hardware Setup:
  - ![alt text](http://url/to/img.png)
