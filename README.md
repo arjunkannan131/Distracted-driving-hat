@@ -8,7 +8,7 @@ The shareable link to our video that we uploaded to the Box folder:
 Report Tasks:
  - (Finshed?) Block Diagram
  - (Finshed?) Code Architecture
- - (Finshed?) Hardware Design
+ - (Finshed!) Hardware Design
 
 References:
  - User's Guide for the MSP430G2553 LaunchPad™ Development Kit
