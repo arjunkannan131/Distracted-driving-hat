@@ -1,5 +1,5 @@
-# Stop-the-Cap
-ELEC 327 Final Project - Stop the Cap - Distracted driving hat. 
+# Distracted-driving-hat
+ELEC 327 Final Project - Distracted driving hat. 
 
 Group 2 - Arjun Kannan, Caio Skornicki, Liam Waite, and Joshua Williams. 
 
