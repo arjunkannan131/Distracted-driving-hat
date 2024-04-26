@@ -21,8 +21,8 @@ Hardware Parts List:
  4. HD44780 LCD (1)
  5. 1 kΩ Resistors (2)
  6. Standard Issue Breadboards (2)
-    a. "Sensor's Breadboard" <--> Breadboard with smallest dimesions.
-    b. "LCD's Breadboard" <--> Breadboard with largest dimesions.
+    a. "Sensor's Breadboard" or "SB" <--> Breadboard with smallest dimesions.
+    b. "LCD's Breadboard" or "LB" <--> Breadboard with largest dimesions.
 
 Hardware Design:
  - The hardware setup for the project divides into 4 distinct "islands" or electronic component groupings:
@@ -32,7 +32,9 @@ Hardware Design:
    d. Island 4 --> Sensor
 
 Launchpad:
-  Note: "a --> b" is equivalent to "a is directly connected to b by a physical wire"
+  Note: "a --> b" or "a <-- b" is equivalent to "a is directly connected to b by a physical wire".
+  Note: All references to a port labeled "GND" are describing distinct "GND" or ground ports on the launchpad (with the exception of one "GND" port on the sensor).
+  Note: All references to a port labeled "5V" are describing distinct "5V" or 5-Volt power supply ports on the launchpad.
  - Ports Utilized:
  Section: 20-Pin BoosterPack Plug-In Module Connector
   1. 5V
@@ -58,9 +60,15 @@ a. LCD
   12. "A" --> 3V3 (of Launchpad)
   13. "K" --> GND (of Launchpad)
   14. NC: D0,D1,D2,D3
-  - The LCD is powered by a 5V power supply and is set to 4-bit mode such that only D4-D7 receive the most significant information regarding the bit representation of the incoming message.
+  - The LCD is powered by a 5V power supply and is set to 4-bit mode such that only D4-D7 receive the most significant information regarding the bit representation of the incoming message. ;;
 b. Sensor
-  1. "GND" Port --> Negative Power Rail of 
-  - The sensor is powered by a 5V power supply. It utilizes the I2C communication protocol. Given that the sesnosr's internal pull-up resistors alone were unable to fully inerface with the project's other electronic components, the team found it imperative to connect the "SDA" and "STL" ports of the sensor to additional pull-up resistors.
-
-
+  1. "GND" Port --> SB's Negative Power Rail  // SB's Negative Power Rail --> "GND" Port (of Launchpad)
+  2. "VCC" Port --> SB's Positive Power Rail // SB's Positive Power Rail --> 5V (of Launchpad)
+  3. "SCL" Port --> 1st end of 1st 1kΩ Resistor <-- P1.6 // 2nd end of 1st 1kΩ Resistor --> SB's Positive Power Rail
+  4. "SDA" Port --> 1st end of 2nd 1kΩ Resistor <-- P1.6 // 2nd end of 2nd 1kΩ Resistor --> SB's Positive Power Rail
+  5. NC: XDA,XCL,ADO,INT
+  - The sensor is powered by a 5V power supply. It utilizes the I2C communication protocol. Given that the sesnosr's internal pull-up resistors alone were unable to fully inerface with the project's other electronic components, the team found it imperative to connect the "SDA" and "SCL" ports of the sensor to additional pull-up resistors.
+  - Due to the limited length of the wires available, several Male-to-Female wires were connected end-to-end in order to create a path between the sensor's ports and other ports on relevant electronic components.
+c. Button
+  1. "1st Side of Push Button" --> LB's Negative Power Rail // LB's Negative Power Rail --> "GND" Port (of Launchpad)
+  2. "2nd Side of Push Button" --> P1.3
