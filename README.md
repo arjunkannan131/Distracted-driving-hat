@@ -10,6 +10,9 @@ Report Tasks:
  - (Finshed?) Code Architecture
  - (Finshed?) Hardware Design
 
+References:
+ - User's Guide for the MSP430G2553 LaunchPad™ Development Kit
+
 Hardware Parts List: 
  - Component Name (Quantity)
  1. MSP430G2553 Launchpad (1)
@@ -27,6 +30,12 @@ Hardware Design:
 
 Launchpad:
   Note: "a --> b" is equivalent to "a is directly connected to b by a physical wire"
- - 
+ - Ports Utilized:
+ Section: 20-Pin BoosterPack Plug-In Module Connector
+  1. 5V
+  2. GND (2 distinct "GND" ports were used in addition to least 2 additional ones outside of this section)
+  3. Port 1 Pins: 1,2,3,6 and 7
+  4. Port 2 Pins: 0,1,2,3,4,5,6,7
+  5. PWM
 
 
