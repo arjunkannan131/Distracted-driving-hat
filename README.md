@@ -21,6 +21,8 @@ Hardware Parts List:
  4. HD44780 LCD (1)
  5. 1 kΩ Resistors (2)
  6. Standard Issue Breadboards (2)
+    a. "Sensor's Breadboard" <--> Breadboard with smallest dimesions.
+    b. "LCD's Breadboard" <--> Breadboard with largest dimesions.
 
 Hardware Design:
  - The hardware setup for the project divides into 4 distinct "islands" or electronic component groupings:
@@ -58,5 +60,7 @@ a. LCD
   14. NC: D0,D1,D2,D3
   - The LCD is powered by a 5V power supply and is set to 4-bit mode such that only D4-D7 receive the most significant information regarding the bit representation of the incoming message.
 b. Sensor
+  1. "GND" Port --> Negative Power Rail of 
+  - The sensor is powered by a 5V power supply. It utilizes the I2C communication protocol. Given that the sesnosr's internal pull-up resistors alone were unable to fully inerface with the project's other electronic components, the team found it imperative to connect the "SDA" and "STL" ports of the sensor to additional pull-up resistors.
 
 
