@@ -8,6 +8,42 @@ The shareable link to our video that we uploaded to the Box folder: https://rice
 References:
  - User's Guide for the MSP430G2553 LaunchPad™ Development Kit
 
+
+Code Architecture:
+
+In this project, an MPU6050, LCD and motors were interfaced with an MSP430. The LCD did not require any
+specific protocol of communication, hence by simply setting the pins connected to it to GPIO and output
+it was possible to interface with it. The same goes for the vibration motors, which were connected to GPIO
+pins. The MPU6050, however, required setting up I2C communication and hence was connected to pins P1.6 and P1.7.
+Furthermore, one button is used to change states from: Start -> Calibration -> Distraction Measurement -> End -> Start (again).
+
+The program begins by initializing all peripherals and the i2c communication and is also initialized by state 0.
+After all initialization, the program remains in an infinite while loop that checks the states and perform appropriate commands.
+
+Through interrupts, whenever a button is called it moves to the next state and performs some commands before leaving as detailed below 
+in the description of states.
+
+a. State = 0 (Start)
+ - The LCD screen displays a message asking the user to press the button to start
+ - Upon pressing the button, the display is updated to ask the user to calibrate and state is changed to state = 1
+b. State = 1 (Calibration)
+ - The LCD is displaying the calibration message as was set up upon leaving state 0.
+ - Upon pressing the button, the display is updated to show the distracted time, sets the benchmark accelerometer value and changes to state = 2
+c. State = 2 (Distraction measurement)
+ - This state is highly called upon in the infinite while loop to compare the current accelerometer value with the benchmark set in calibration
+ - There are two levels of distraction, level 1 triggers two motors and level 2 triggers an additional 2 motors.
+ - In the infinite while loop, a counter of iterations is used to count the distracted time (saved in in a variable that counts the seconds) and updates the LCD each 10 distracted seconds
+ - Inside the infinite while loop, there are  smaller while loops used to measure if still distracted and at what level and increments the counters and trigger motors.
+ - Upon pressing the button, the display is updated to show the total accumalated distracted time and changes to state = 3
+d. State = 3 (End)
+ - In this state, the LCD is showing the total accumulated distracted time and does not update anymore.
+ - Upon pressing the button, the display is updated to show the start message again and changes to state = 0
+
+The infinite while loop is one of the main parts of the code architecture, as it does pooling of states and also pooling of accelerometer values.
+If has an if statement checking if it is in state 2 and if it is, the distraction values are measured by being compared with the benchmark calibrated accelerometer value.
+If it is not in state 2, then simply what it does is keeping the counters at 0 so they are resetted when entering state = 2.
+                                                                                                           
+
 Hardware Parts List: 
  - Component Name (Quantity)
  1. MSP430G2553 Launchpad (1)
@@ -64,7 +100,7 @@ b. Sensor
   3. "SCL" Port --> 1st end of 1st 1kΩ Resistor <-- P1.6 // 2nd end of 1st 1kΩ Resistor --> SB's Positive Power Rail
   4. "SDA" Port --> 1st end of 2nd 1kΩ Resistor <-- P1.6 // 2nd end of 2nd 1kΩ Resistor --> SB's Positive Power Rail
   5. NC: XDA,XCL,ADO,INT
-  - The sensor is powered by a 5V power supply. It utilizes the I2C communication protocol. Given that the sesnosr's internal pull-up resistors alone were unable to fully inerface with the project's other electronic components, the team found it imperative to connect the "SDA" and "SCL" ports of the sensor to additional pull-up resistors.
+  - The sensor is powered by a 5V power supply. It utilizes the I2C communication protocol. Given that the MSP's internal pull-up resistors alone were unable to fully inerface with the project's other electronic components, the team found it imperative to connect the "SDA" and "SCL" ports of the sensor to additional pull-up resistors, otherwise the start condition for the initialization of the MPU never happened.
   - Due to the limited length of the wires available, several Male-to-Female wires were connected end-to-end in order to create a path between the sensor's ports and other ports on relevant electronic components.
 c. Button
   1. "1st Side of Push Button" --> LB's Negative Power Rail // LB's Negative Power Rail --> "GND" Port (of Launchpad)
