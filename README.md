@@ -5,11 +5,6 @@ Group 2 - Arjun Kannan, Caio Skornicki, Liam Waite, and Joshua Williams.
 
 The shareable link to our video that we uploaded to the Box folder: https://rice.box.com/s/g2vxw5zba0gppa39t4a6o9qrpegb65ov
 
-Report Tasks:
- - (Finshed?) Block Diagram
- - (Finshed?) Code Architecture
- - (Finshed!) Hardware Design
-
 References:
  - User's Guide for the MSP430G2553 LaunchPad™ Development Kit
 
@@ -17,19 +12,21 @@ Hardware Parts List:
  - Component Name (Quantity)
  1. MSP430G2553 Launchpad (1)
  2. MPU6050 Sensor (1)
- 3. FIT0774 Vibration Motors (12)
+ 3. FIT0774 Vibration Motors (12) - Only 4 being used
  4. HD44780 LCD (1)
  5. 1 kΩ Resistors (2)
  6. Standard Issue Breadboards (2)
     a. "Sensor's Breadboard" or "SB" <--> Breadboard with smallest dimesions.
     b. "LCD's Breadboard" or "LB" <--> Breadboard with largest dimesions.
 
+
+
 Hardware Design:
  - The hardware setup for the project divides into 4 distinct "islands" or electronic component groupings:
    a. Island 1 --> Launchpad
    b. Island 2 --> LCD (plus potentiometer)
    c. Island 3 --> Intermediary Nodes
-   d. Island 4 --> Sensor
+   d. Island 4 --> Sensor and Motors
 
 Launchpad:
   Note: "a --> b" or "a <-- b" is equivalent to "a is directly connected to b by a physical wire".
@@ -72,3 +69,10 @@ b. Sensor
 c. Button
   1. "1st Side of Push Button" --> LB's Negative Power Rail // LB's Negative Power Rail --> "GND" Port (of Launchpad)
   2. "2nd Side of Push Button" --> P1.3
+d. Motors
+  - There are two level of motors that are turned on depending on the level of vibration required by level of head tilt
+  - Two motors are connected to ground and P1.4
+  - Two motors are connected to ground and P1.1
+
+Schematic of hardware design:
+![ELEC327_Final_Block_Diagram](https://github.com/arjunkannan131/Distracted-driving-hat/assets/143037412/d6ba68f7-16ad-4c56-91c8-846528c64a84)
