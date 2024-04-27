@@ -3,7 +3,7 @@ ELEC 327 Final Project - Distracted driving hat.
 
 Group 2 - Arjun Kannan, Caio Skornicki, Liam Waite, and Joshua Williams. 
 
-The shareable link to our video that we uploaded to the Box folder:
+The shareable link to our video that we uploaded to the Box folder: https://rice.box.com/s/g2vxw5zba0gppa39t4a6o9qrpegb65ov
 
 Report Tasks:
  - (Finshed?) Block Diagram
