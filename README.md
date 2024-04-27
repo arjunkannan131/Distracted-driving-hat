@@ -75,4 +75,5 @@ d. Motors
   - Two motors are connected to ground and P1.1
 
 Schematic of hardware design:
+
 ![ELEC327_Final_Block_Diagram](https://github.com/arjunkannan131/Distracted-driving-hat/assets/143037412/d6ba68f7-16ad-4c56-91c8-846528c64a84)
